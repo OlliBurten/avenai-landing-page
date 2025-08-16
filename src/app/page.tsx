@@ -10,7 +10,10 @@ import {
   UsersIcon,
   ArrowRightIcon,
   CheckIcon,
-  PlayIcon
+  PlayIcon,
+  CodeBracketIcon,
+  ClockIcon,
+  CurrencyDollarIcon
 } from '@heroicons/react/24/outline'
 
 export default function MarketingLanding() {
@@ -40,92 +43,79 @@ export default function MarketingLanding() {
 
   const features = [
     {
-      icon: SparklesIcon,
-      title: 'AI-Powered Insights',
-      description: 'Advanced AI models that understand your business context and provide actionable insights.',
+      icon: DocumentTextIcon,
+      title: 'API Documentation Upload',
+      description: 'Simply upload your API docs and Avenai instantly becomes an expert on your entire API.',
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: DocumentTextIcon,
-      title: 'Document Intelligence',
-      description: 'Upload any document and get instant analysis, summaries, and key information extraction.',
+      icon: ChatBubbleLeftRightIcon,
+      title: '24/7 AI Support',
+      description: 'Your customers get instant answers to API questions, error debugging, and code examples.',
       gradient: 'from-emerald-500 to-teal-500'
     },
     {
-      icon: ChatBubbleLeftRightIcon,
-      title: 'Natural Conversations',
-      description: 'Chat with your AI assistant about your documents, business questions, and more.',
+      icon: CodeBracketIcon,
+      title: 'Error Code Debugging',
+      description: 'Customers paste error codes and get instant solutions with step-by-step guidance.',
       gradient: 'from-indigo-500 to-blue-500'
     },
     {
       icon: ShieldCheckIcon,
-      title: 'Enterprise Security',
-      description: 'Bank-level security with data encryption, access controls, and compliance features.',
+      title: 'Branded Customer Portal',
+      description: 'Seamlessly integrate Avenai into your existing customer dashboard with your branding.',
       gradient: 'from-slate-600 to-gray-700'
     },
     {
       icon: ChartBarIcon,
-      title: 'Analytics Dashboard',
-      description: 'Track usage, performance, and insights across your organization.',
+      title: 'Integration Analytics',
+      description: 'Track integration success rates, support ticket reduction, and customer satisfaction.',
       gradient: 'from-violet-500 to-purple-500'
     },
     {
       icon: UsersIcon,
-      title: 'Multi-tenant Architecture',
-      description: 'Serve multiple clients with isolated, secure environments for each.',
+      title: 'Multi-tenant Support',
+      description: 'Serve multiple customer organizations with isolated, secure environments.',
       gradient: 'from-rose-500 to-pink-500'
     }
   ]
 
-  const pricingPlans = [
+  const benefits = [
     {
-      name: 'Starter',
-      price: '$99',
-      period: '/month',
-      description: 'Perfect for small businesses getting started with AI',
-      features: [
-        'Up to 100 customer users',
-        'Basic AI models',
-        'Document upload (up to 1GB)',
-        'Email support',
-        'Basic analytics'
-      ],
-      popular: false,
-      gradient: 'from-slate-600 to-gray-700'
+      icon: CurrencyDollarIcon,
+      title: 'Save $50K+ Annually',
+      description: 'Reduce support costs by automating API integration questions',
+      color: 'text-green-400'
     },
     {
-      name: 'Professional',
-      price: '$299',
-      period: '/month',
-      description: 'Ideal for growing businesses with multiple teams',
-      features: [
-        'Up to 500 customer users',
-        'Advanced AI models',
-        'Document upload (up to 10GB)',
-        'Priority support',
-        'Advanced analytics',
-        'Custom branding',
-        'API access'
-      ],
-      popular: true,
-      gradient: 'from-blue-600 to-indigo-600'
+      icon: ClockIcon,
+      title: '24/7 Availability',
+      description: 'Never lose a customer due to support wait times',
+      color: 'text-blue-400'
     },
     {
-      name: 'Enterprise',
-      price: 'Custom',
-      period: '',
-      description: 'For large organizations with complex requirements',
-      features: [
-        'Unlimited customer users',
-        'Custom AI model training',
-        'Unlimited storage',
-        'Dedicated support',
-        'Custom integrations',
-        'SLA guarantees',
-        'On-premise options'
-      ],
-      popular: false,
-      gradient: 'from-emerald-600 to-teal-600'
+      icon: UsersIcon,
+      title: 'Reduce Churn',
+      description: 'Faster integrations mean happier, more successful customers',
+      color: 'text-purple-400'
+    }
+  ]
+
+  const howItWorks = [
+    {
+      number: '1',
+      title: 'Upload API Docs',
+      description: 'Upload your API documentation to Avenai in minutes'
+    },
+    {
+      number: '2',
+      title: 'Integrate Portal',
+      description: 'Add Avenai to your customer dashboard with one line of code'
+    },
+    {
+      number: '3',
+      title: 'Reduce Support',
+      description: 'Watch support tickets drop as customers get instant AI help'
     }
   ]
 
@@ -164,7 +154,7 @@ export default function MarketingLanding() {
                 <div className="absolute inset-0 bg-blue-400/20 rounded-full blur-lg animate-ping" />
               </div>
               <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-                Avenai AI
+                Avenai
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
@@ -187,17 +177,17 @@ export default function MarketingLanding() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="relative">
             <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-cyan-200 mb-8 leading-tight">
-              Transform Your Business with
+              Stop Losing Customers to
               <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-                AI-Powered Insights
+                API Integration Problems
               </span>
             </h1>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 blur-3xl -z-10" />
           </div>
           
           <p className="text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Avenai AI provides enterprise-grade AI services that help you deliver intelligent solutions to your customers. 
-            Upload documents, chat with AI, and get instant insights that drive business growth.
+            Avenai is a 24/7 AI that reads your API docs and answers your customers' questions. 
+            It's like having a technical support person who never sleeps and knows your API inside out.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
@@ -217,20 +207,17 @@ export default function MarketingLanding() {
             </a>
           </div>
 
-          {/* Floating Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
-              <div className="text-3xl font-bold text-blue-400 mb-2">99.9%</div>
-              <div className="text-gray-300">Uptime Guarantee</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">24/7</div>
-              <div className="text-gray-300">AI Support</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
-              <div className="text-3xl font-bold text-emerald-400 mb-2">10x</div>
-              <div className="text-gray-300">Faster Insights</div>
-            </div>
+          {/* Key Benefits */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+                <div className={`text-3xl font-bold ${benefit.color} mb-2`}>
+                  <benefit.icon className="h-12 w-12 mx-auto mb-3" />
+                  {benefit.title}
+                </div>
+                <div className="text-gray-300 text-center">{benefit.description}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -240,10 +227,10 @@ export default function MarketingLanding() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-6">
-              Everything You Need to Deliver AI Services
+              Everything You Need to Provide 24/7 API Support
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our platform provides all the tools you need to offer cutting-edge AI services to your customers
+              Transform your customer support from reactive to proactive with AI-powered API assistance
             </p>
           </div>
 
@@ -275,11 +262,7 @@ export default function MarketingLanding() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              { number: '1', title: 'Sign Up', description: 'Create your account and set up your company profile in minutes' },
-              { number: '2', title: 'Customize', description: 'Brand your portal and configure AI services for your customers' },
-              { number: '3', title: 'Launch', description: 'Invite customers and start delivering AI-powered value immediately' }
-            ].map((step, index) => (
+            {howItWorks.map((step, index) => (
               <div key={index} className="text-center group">
                 <div className="relative mb-8">
                   <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full text-white text-4xl font-black mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -303,64 +286,56 @@ export default function MarketingLanding() {
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-6">Simple, Transparent Pricing</h2>
             <p className="text-xl text-gray-300">
-              Choose the plan that fits your business needs
+              Start with a free trial, then scale as you grow
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, index) => (
-              <div
-                key={index}
-                className={`relative bg-white/5 backdrop-blur-xl border-2 rounded-3xl p-8 hover:scale-105 transition-all duration-300 ${
-                  plan.popular 
-                    ? 'border-blue-500/50 bg-gradient-to-b from-blue-900/20 to-blue-900/10' 
-                    : 'border-white/10 hover:border-blue-500/30'
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full text-sm font-bold">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">{plan.price}</span>
-                    <span className="text-gray-400 ml-2 text-xl">{plan.period}</span>
-                  </div>
-                  <p className="text-gray-300 mt-2">{plan.description}</p>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white/5 backdrop-blur-xl border-2 border-blue-500/50 rounded-3xl p-12 text-center">
+              <div className="mb-8">
+                <h3 className="text-3xl font-bold text-white mb-4">Professional Plan</h3>
+                <div className="flex items-baseline justify-center">
+                  <span className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">$2,000</span>
+                  <span className="text-gray-400 ml-2 text-2xl">/month</span>
                 </div>
-
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center">
-                      <CheckIcon className="h-6 w-6 text-green-400 mr-3 flex-shrink-0" />
-                      <span className="text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {plan.name === 'Enterprise' ? (
-                  <button className="w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 bg-gradient-to-r from-slate-600 to-gray-700 text-white hover:from-slate-700 hover:to-gray-800 transform hover:scale-105">
-                    Contact Sales
-                  </button>
-                ) : (
-                  <a
-                    href="https://app.avenai.io"
-                    className={`w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 inline-block text-center transform hover:scale-105 ${
-                      plan.popular
-                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-blue-500/25'
-                        : 'bg-gradient-to-r from-slate-600 to-gray-700 text-white hover:from-slate-700 hover:to-gray-800'
-                    }`}
-                  >
-                    Get Started
-                  </a>
-                )}
+                <p className="text-gray-300 mt-2 text-lg">Perfect for SaaS companies with API integration support needs</p>
               </div>
-            ))}
+
+              <ul className="space-y-4 mb-8 text-left max-w-2xl mx-auto">
+                <li className="flex items-center">
+                  <CheckIcon className="h-6 w-6 text-green-400 mr-3 flex-shrink-0" />
+                  <span className="text-gray-300">Unlimited API documentation uploads</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckIcon className="h-6 w-6 text-green-400 mr-3 flex-shrink-0" />
+                  <span className="text-gray-300">24/7 AI-powered customer support</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckIcon className="h-6 w-6 text-green-400 mr-3 flex-shrink-0" />
+                  <span className="text-gray-300">Branded customer portal integration</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckIcon className="h-6 w-6 text-green-400 mr-3 flex-shrink-0" />
+                  <span className="text-gray-300">Advanced analytics and reporting</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckIcon className="h-6 w-6 text-green-400 mr-3 flex-shrink-0" />
+                  <span className="text-gray-300">Priority support and onboarding</span>
+                </li>
+              </ul>
+
+              <div className="text-center">
+                <a
+                  href="https://app.avenai.io"
+                  className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-12 py-4 rounded-2xl text-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/50"
+                >
+                  Start Free Trial
+                </a>
+                <p className="text-blue-200 mt-4 text-lg">
+                  Free for the first month • No credit card required
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -369,10 +344,10 @@ export default function MarketingLanding() {
       <section id="contact" className="relative z-10 py-32 bg-gradient-to-r from-blue-900/30 to-indigo-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-6">
-            Ready to Transform Your Business?
+            Ready to Reduce Support Costs by $50K+ Annually?
           </h2>
           <p className="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
-            Join hundreds of businesses already using Avenai AI to deliver exceptional value to their customers
+            Join the first companies testing Avenai. We'll integrate it for free for the first month.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-2xl mx-auto mb-8">
@@ -380,19 +355,19 @@ export default function MarketingLanding() {
               href="https://app.avenai.io"
               className="group relative bg-gradient-to-r from-white to-blue-50 text-slate-900 px-10 py-4 rounded-2xl text-xl font-bold hover:from-blue-50 hover:to-white transition-all duration-300 transform hover:scale-105 shadow-2xl"
             >
-              <span className="relative z-10">Create Account</span>
+              <span className="relative z-10">Start Free Trial</span>
               <div className="absolute inset-0 bg-gradient-to-r from-white to-blue-50 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity" />
             </a>
             <a
               href="https://app.avenai.io"
               className="border-2 border-white/30 text-white px-10 py-4 rounded-2xl text-xl font-bold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm hover:border-white/50"
             >
-              View Demo
+              Schedule Demo
             </a>
           </div>
           
           <p className="text-blue-200 text-lg">
-            No credit card required • 14-day free trial
+            Limited to 1-2 companies for initial testing • $2K/month after trial
           </p>
         </div>
       </section>
@@ -404,10 +379,10 @@ export default function MarketingLanding() {
             <div>
               <div className="flex items-center mb-6">
                 <SparklesIcon className="h-10 w-10 text-blue-400" />
-                <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Avenai AI</span>
+                <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Avenai</span>
               </div>
               <p className="text-gray-400 text-lg">
-                Empowering businesses with enterprise-grade AI services
+                The 24/7 AI that reads your API docs and answers your customers' questions
               </p>
             </div>
             
@@ -441,7 +416,7 @@ export default function MarketingLanding() {
           
           <div className="border-t border-white/10 mt-12 pt-8 text-center">
             <p className="text-gray-400">
-              © 2024 Avenai AI. All rights reserved.
+              © 2024 Avenai. All rights reserved.
             </p>
           </div>
         </div>
