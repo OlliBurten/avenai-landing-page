@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { 
   SparklesIcon,
   DocumentTextIcon,
@@ -9,19 +9,28 @@ import {
   ChartBarIcon,
   UsersIcon,
   ArrowRightIcon,
-  CheckIcon
+  CheckIcon,
+  PlayIcon
 } from '@heroicons/react/24/outline'
 
 export default function MarketingLanding() {
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email.trim()) return
 
     setIsSubmitting(true)
-    // In a real app, you'd send this to your CRM or email service
     setTimeout(() => {
       alert('Thank you for your interest! We\'ll be in touch soon.')
       setEmail('')
@@ -33,32 +42,38 @@ export default function MarketingLanding() {
     {
       icon: SparklesIcon,
       title: 'AI-Powered Insights',
-      description: 'Advanced AI models that understand your business context and provide actionable insights.'
+      description: 'Advanced AI models that understand your business context and provide actionable insights.',
+      gradient: 'from-purple-500 to-pink-500'
     },
     {
       icon: DocumentTextIcon,
       title: 'Document Intelligence',
-      description: 'Upload any document and get instant analysis, summaries, and key information extraction.'
+      description: 'Upload any document and get instant analysis, summaries, and key information extraction.',
+      gradient: 'from-blue-500 to-cyan-500'
     },
     {
       icon: ChatBubbleLeftRightIcon,
       title: 'Natural Conversations',
-      description: 'Chat with your AI assistant about your documents, business questions, and more.'
+      description: 'Chat with your AI assistant about your documents, business questions, and more.',
+      gradient: 'from-emerald-500 to-teal-500'
     },
     {
       icon: ShieldCheckIcon,
       title: 'Enterprise Security',
-      description: 'Bank-level security with data encryption, access controls, and compliance features.'
+      description: 'Bank-level security with data encryption, access controls, and compliance features.',
+      gradient: 'from-orange-500 to-red-500'
     },
     {
       icon: ChartBarIcon,
       title: 'Analytics Dashboard',
-      description: 'Track usage, performance, and insights across your organization.'
+      description: 'Track usage, performance, and insights across your organization.',
+      gradient: 'from-indigo-500 to-purple-500'
     },
     {
       icon: UsersIcon,
       title: 'Multi-tenant Architecture',
-      description: 'Serve multiple clients with isolated, secure environments for each.'
+      description: 'Serve multiple clients with isolated, secure environments for each.',
+      gradient: 'from-pink-500 to-rose-500'
     }
   ]
 
@@ -75,7 +90,8 @@ export default function MarketingLanding() {
         'Email support',
         'Basic analytics'
       ],
-      popular: false
+      popular: false,
+      gradient: 'from-gray-600 to-gray-700'
     },
     {
       name: 'Professional',
@@ -91,7 +107,8 @@ export default function MarketingLanding() {
         'Custom branding',
         'API access'
       ],
-      popular: true
+      popular: true,
+      gradient: 'from-purple-600 to-indigo-600'
     },
     {
       name: 'Enterprise',
@@ -107,27 +124,54 @@ export default function MarketingLanding() {
         'SLA guarantees',
         'On-premise options'
       ],
-      popular: false
+      popular: false,
+      gradient: 'from-blue-600 to-cyan-600'
     }
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div 
+          className="absolute w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"
+          style={{
+            left: mousePosition.x * 0.1,
+            top: mousePosition.y * 0.1,
+            transition: 'all 0.3s ease-out'
+          }}
+        />
+        <div 
+          className="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"
+          style={{
+            right: mousePosition.x * 0.05,
+            bottom: mousePosition.y * 0.05,
+            transition: 'all 0.3s ease-out'
+          }}
+        />
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30" />
+      </div>
+
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
+      <nav className="relative z-10 bg-white/5 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
-              <SparklesIcon className="h-8 w-8 text-indigo-600" />
-              <span className="ml-2 text-xl font-bold text-gray-900">Avenai AI</span>
+              <div className="relative">
+                <SparklesIcon className="h-10 w-10 text-purple-400 animate-pulse" />
+                <div className="absolute inset-0 bg-purple-400/20 rounded-full blur-lg animate-ping" />
+              </div>
+              <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+                Avenai AI
+              </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-gray-900">Features</a>
-              <a href="#pricing" className="text-gray-600 hover:text-gray-900">Pricing</a>
-              <a href="#contact" className="text-gray-600 hover:text-gray-900">Contact</a>
+              <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
+              <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
+              <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
               <a
                 href="https://app.avenai.io"
-                className="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700"
+                className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-xl text-sm font-medium hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
               >
                 Get Started
               </a>
@@ -137,53 +181,81 @@ export default function MarketingLanding() {
       </nav>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-50 to-purple-50 py-20">
+      <section className="relative z-10 py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Transform Your Business with
-            <span className="text-indigo-600"> AI-Powered Insights</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <div className="relative">
+            <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-pink-200 mb-8 leading-tight">
+              Transform Your Business with
+              <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+                AI-Powered Insights
+              </span>
+            </h1>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 blur-3xl -z-10" />
+          </div>
+          
+          <p className="text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
             Avenai AI provides enterprise-grade AI services that help you deliver intelligent solutions to your customers. 
             Upload documents, chat with AI, and get instant insights that drive business growth.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                          <a
-                href="https://app.avenai.io"
-                className="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition-colors"
-              >
-                Start Free Trial
-              </a>
-              <a
-                href="https://app.avenai.io"
-                className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-50 transition-colors"
-              >
-                Watch Demo
-              </a>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <a
+              href="https://app.avenai.io"
+              className="group relative bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-10 py-4 rounded-2xl text-xl font-bold hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-purple-500/50"
+            >
+              <span className="relative z-10">Start Free Trial</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity" />
+            </a>
+            <a
+              href="https://app.avenai.io"
+              className="group relative border-2 border-white/20 text-white px-10 py-4 rounded-2xl text-xl font-bold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+            >
+              <PlayIcon className="inline-block w-6 h-6 mr-2" />
+              Watch Demo
+            </a>
+          </div>
+
+          {/* Floating Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div className="text-3xl font-bold text-purple-400 mb-2">99.9%</div>
+              <div className="text-gray-300">Uptime Guarantee</div>
+            </div>
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div className="text-3xl font-bold text-pink-400 mb-2">24/7</div>
+              <div className="text-gray-300">AI Support</div>
+            </div>
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div className="text-3xl font-bold text-cyan-400 mb-2">10x</div>
+              <div className="text-gray-300">Faster Insights</div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20">
+      <section id="features" className="relative z-10 py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200 mb-6">
               Everything You Need to Deliver AI Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Our platform provides all the tools you need to offer cutting-edge AI services to your customers
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-lg mb-4">
-                  <feature.icon className="h-6 w-6 text-indigo-600" />
+              <div 
+                key={index} 
+                className="group bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all duration-500 transform hover:scale-105 hover:border-purple-500/50"
+              >
+                <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${feature.gradient} rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <feature.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
+                <p className="text-gray-300 text-lg leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -191,53 +263,44 @@ export default function MarketingLanding() {
       </section>
 
       {/* How It Works */}
-      <section className="bg-gray-50 py-20">
+      <section className="relative z-10 py-32 bg-gradient-to-r from-purple-900/20 to-indigo-900/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
-            <p className="text-xl text-gray-600">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200 mb-6">How It Works</h2>
+            <p className="text-xl text-gray-300">
               Get started in minutes, not months
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full text-white text-2xl font-bold mb-4">
-                1
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              { number: '1', title: 'Sign Up', description: 'Create your account and set up your company profile in minutes' },
+              { number: '2', title: 'Customize', description: 'Brand your portal and configure AI services for your customers' },
+              { number: '3', title: 'Launch', description: 'Invite customers and start delivering AI-powered value immediately' }
+            ].map((step, index) => (
+              <div key={index} className="text-center group">
+                <div className="relative mb-8">
+                  <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full text-white text-4xl font-black mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {step.number}
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  {step.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Sign Up</h3>
-              <p className="text-gray-600">
-                Create your account and set up your company profile in minutes
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full text-white text-2xl font-bold mb-4">
-                2
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Customize</h3>
-              <p className="text-gray-600">
-                Brand your portal and configure AI services for your customers
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full text-white text-2xl font-bold mb-4">
-                3
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Launch</h3>
-              <p className="text-gray-600">
-                Invite customers and start delivering AI-powered value immediately
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20">
+      <section id="pricing" className="relative z-10 py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
-            <p className="text-xl text-gray-600">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200 mb-6">Simple, Transparent Pricing</h2>
+            <p className="text-xl text-gray-300">
               Choose the plan that fits your business needs
             </p>
           </div>
@@ -246,47 +309,49 @@ export default function MarketingLanding() {
             {pricingPlans.map((plan, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-lg shadow-lg border-2 p-8 ${
-                  plan.popular ? 'border-indigo-500 relative' : 'border-gray-200'
+                className={`relative bg-white/5 backdrop-blur-xl border-2 rounded-3xl p-8 hover:scale-105 transition-all duration-300 ${
+                  plan.popular 
+                    ? 'border-purple-500/50 bg-gradient-to-b from-purple-900/20 to-purple-900/10' 
+                    : 'border-white/10 hover:border-purple-500/30'
                 }`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full text-sm font-bold">
                       Most Popular
                     </span>
                   </div>
                 )}
                 
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
                   <div className="flex items-baseline justify-center">
-                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                    <span className="text-gray-600 ml-1">{plan.period}</span>
+                    <span className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{plan.price}</span>
+                    <span className="text-gray-400 ml-2 text-xl">{plan.period}</span>
                   </div>
-                  <p className="text-gray-600 mt-2">{plan.description}</p>
+                  <p className="text-gray-300 mt-2">{plan.description}</p>
                 </div>
 
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
-                      <CheckIcon className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                      <CheckIcon className="h-6 w-6 text-green-400 mr-3 flex-shrink-0" />
+                      <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 {plan.name === 'Enterprise' ? (
-                  <button className="w-full py-3 px-6 rounded-lg font-medium transition-colors bg-gray-100 text-gray-900 hover:bg-gray-200">
+                  <button className="w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 bg-gradient-to-r from-gray-600 to-gray-700 text-white hover:from-gray-700 hover:to-gray-800 transform hover:scale-105">
                     Contact Sales
                   </button>
                 ) : (
                   <a
                     href="https://app.avenai.io"
-                    className={`w-full py-3 px-6 rounded-lg font-medium transition-colors inline-block text-center ${
+                    className={`w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 inline-block text-center transform hover:scale-105 ${
                       plan.popular
-                        ? 'bg-indigo-600 text-white hover:bg-gray-700'
-                        : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                        ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700 shadow-lg hover:shadow-purple-500/25'
+                        : 'bg-gradient-to-r from-gray-600 to-gray-700 text-white hover:from-gray-700 hover:to-gray-800'
                     }`}
                   >
                     Get Started
@@ -299,79 +364,80 @@ export default function MarketingLanding() {
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="bg-indigo-600 py-20">
+      <section id="contact" className="relative z-10 py-32 bg-gradient-to-r from-purple-900/30 to-indigo-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200 mb-6">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
             Join hundreds of businesses already using Avenai AI to deliver exceptional value to their customers
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <div className="flex flex-col sm:flex-row gap-6 max-w-2xl mx-auto mb-8">
             <a
               href="https://app.avenai.io"
-              className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors text-center"
+              className="group relative bg-gradient-to-r from-white to-purple-100 text-slate-900 px-10 py-4 rounded-2xl text-xl font-bold hover:from-purple-50 hover:to-white transition-all duration-300 transform hover:scale-105 shadow-2xl"
             >
-              Create Account
+              <span className="relative z-10">Create Account</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white to-purple-100 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity" />
             </a>
             <a
               href="https://app.avenai.io"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-600 transition-colors text-center"
+              className="border-2 border-white/30 text-white px-10 py-4 rounded-2xl text-xl font-bold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm hover:border-white/50"
             >
               View Demo
             </a>
           </div>
           
-          <p className="text-indigo-200 text-sm mt-4">
+          <p className="text-purple-200 text-lg">
             No credit card required • 14-day free trial
           </p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 py-12">
+      <footer className="relative z-10 bg-slate-900/50 backdrop-blur-xl border-t border-white/10 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center mb-4">
-                <SparklesIcon className="h-8 w-8 text-indigo-400" />
-                <span className="ml-2 text-xl font-bold text-white">Avenai AI</span>
+              <div className="flex items-center mb-6">
+                <SparklesIcon className="h-10 w-10 text-purple-400" />
+                <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">Avenai AI</span>
               </div>
-              <p className="text-gray-400">
+              <p className="text-gray-400 text-lg">
                 Empowering businesses with enterprise-grade AI services
               </p>
             </div>
             
             <div>
-              <h3 className="text-white font-semibold mb-4">Product</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#features" className="hover:text-white">Features</a></li>
-                <li><a href="#pricing" className="hover:text-white">Pricing</a></li>
-                <li><a href="https://app.avenai.io/demo" className="hover:text-white">Demo</a></li>
+              <h3 className="text-white font-bold text-lg mb-6">Product</h3>
+              <ul className="space-y-3 text-gray-400">
+                <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
+                <li><a href="#pricing" className="hover:text-white transition-colors">Pricing</a></li>
+                <li><a href="https://app.avenai.io" className="hover:text-white transition-colors">Demo</a></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="text-white font-semibold mb-4">Company</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#about" className="hover:text-white">About</a></li>
-                <li><a href="#contact" className="hover:text-white">Contact</a></li>
-                <li><a href="#careers" className="hover:text-white">Careers</a></li>
+              <h3 className="text-white font-bold text-lg mb-6">Company</h3>
+              <ul className="space-y-3 text-gray-400">
+                <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
+                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+                <li><a href="#careers" className="hover:text-white transition-colors">Careers</a></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="text-white font-semibold mb-4">Support</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="https://app.avenai.io/help" className="hover:text-white">Help Center</a></li>
-                <li><a href="https://app.avenai.io/docs" className="hover:text-white">Documentation</a></li>
-                <li><a href="https://app.avenai.io/contact" className="hover:text-white">Contact Support</a></li>
+              <h3 className="text-white font-bold text-lg mb-6">Support</h3>
+              <ul className="space-y-3 text-gray-400">
+                <li><a href="https://app.avenai.io/help" className="hover:text-white transition-colors">Help Center</a></li>
+                <li><a href="https://app.avenai.io/docs" className="hover:text-white transition-colors">Documentation</a></li>
+                <li><a href="https://app.avenai.io/contact" className="hover:text-white transition-colors">Contact Support</a></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+          <div className="border-t border-white/10 mt-12 pt-8 text-center">
             <p className="text-gray-400">
               © 2024 Avenai AI. All rights reserved.
             </p>
