@@ -126,7 +126,7 @@ export default function MarketingLanding() {
               <a href="#pricing" className="text-gray-600 hover:text-gray-900">Pricing</a>
               <a href="#contact" className="text-gray-600 hover:text-gray-900">Contact</a>
               <a
-                href="https://app.avenai.io/signup"
+                href="https://app.avenai.io"
                 className="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700"
               >
                 Get Started
@@ -148,18 +148,18 @@ export default function MarketingLanding() {
             Upload documents, chat with AI, and get instant insights that drive business growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://app.avenai.io/signup"
-              className="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition-colors"
-            >
-              Start Free Trial
-            </a>
-            <a
-              href="https://app.avenai.io/demo"
-              className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-50 transition-colors"
-            >
-              Watch Demo
-            </a>
+                          <a
+                href="https://app.avenai.io"
+                className="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition-colors"
+              >
+                Start Free Trial
+              </a>
+              <a
+                href="https://app.avenai.io"
+                className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-50 transition-colors"
+              >
+                Watch Demo
+              </a>
           </div>
         </div>
       </section>
@@ -282,7 +282,7 @@ export default function MarketingLanding() {
                   </button>
                 ) : (
                   <a
-                    href="https://app.avenai.io/signup"
+                    href="https://app.avenai.io"
                     className={`w-full py-3 px-6 rounded-lg font-medium transition-colors inline-block text-center ${
                       plan.popular
                         ? 'bg-indigo-600 text-white hover:bg-gray-700'
@@ -310,13 +310,13 @@ export default function MarketingLanding() {
           
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <a
-              href="https://app.avenai.io/signup"
+              href="https://app.avenai.io"
               className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors text-center"
             >
               Create Account
             </a>
             <a
-              href="https://app.avenai.io/demo"
+              href="https://app.avenai.io"
               className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-600 transition-colors text-center"
             >
               View Demo
