@@ -8,7 +8,6 @@ import {
   ShieldCheckIcon,
   ChartBarIcon,
   UsersIcon,
-  ArrowRightIcon,
   CheckIcon,
   PlayIcon,
   CodeBracketIcon,
@@ -17,8 +16,6 @@ import {
 } from '@heroicons/react/24/outline'
 
 export default function MarketingLanding() {
-  const [email, setEmail] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
@@ -29,17 +26,7 @@ export default function MarketingLanding() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!email.trim()) return
 
-    setIsSubmitting(true)
-    setTimeout(() => {
-      alert('Thank you for your interest! We\'ll be in touch soon.')
-      setEmail('')
-      setIsSubmitting(false)
-    }, 1000)
-  }
 
   const features = [
     {
@@ -185,10 +172,10 @@ export default function MarketingLanding() {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 blur-3xl -z-10" />
           </div>
           
-          <p className="text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Avenai is a 24/7 AI that reads your API docs and answers your customers' questions. 
-            It's like having a technical support person who never sleeps and knows your API inside out.
-          </p>
+                      <p className="text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+              Avenai is a 24/7 AI that reads your API docs and answers your customers&apos; questions. 
+              It&apos;s like having a technical support person who never sleeps and knows your API inside out.
+            </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
             <a
@@ -346,9 +333,9 @@ export default function MarketingLanding() {
           <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-6">
             Ready to Reduce Support Costs by $50K+ Annually?
           </h2>
-          <p className="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
-            Join the first companies testing Avenai. We'll integrate it for free for the first month.
-          </p>
+                      <p className="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+              Join the first companies testing Avenai. We&apos;ll integrate it for free for the first month.
+            </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-2xl mx-auto mb-8">
             <a
@@ -382,7 +369,7 @@ export default function MarketingLanding() {
                 <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Avenai</span>
               </div>
               <p className="text-gray-400 text-lg">
-                The 24/7 AI that reads your API docs and answers your customers' questions
+                The 24/7 AI that reads your API docs and answers your customers&apos; questions
               </p>
             </div>
             
